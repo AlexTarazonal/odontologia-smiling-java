@@ -1,0 +1,108 @@
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;  
+    a{
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 15px;
+        text-decoration: none;
+        font-size: 120%;    
+    }
+}
+header h1{
+    font-family: Arial;
+    text-align: center;
+}
+.logo {
+    height: 40px;
+}
+/*NAVEGACION*/
+
+.lista {
+    ul {
+        list-style-type: none;
+        overflow: hidden;
+        /*Manera independiente al resto*/
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        /*Se despliegue como bloque*/
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #C2DADC;
+        border-radius: 15px;
+    }
+
+}
+
+.seleccionado{
+    a {
+        background-color: #C2DADC;
+    border-radius: 15px;
+    color: black !important; /*!important es para que los cambios se apliquen yes o yes*/
+
+    }
+    a:hover {
+        background-color: #87AAB5 !important;
+    }
+}
+/*CONTENIDO*/
+.cont {
+    padding: 10%;
+    text-align: justify;
+    font-size: 23px;
+}
+
+.footer {
+    padding: 50px;
+
+    ul {
+        list-style-type: none;
+        overflow: hidden;
+        /*Manera independiente al resto*/
+        padding: 0;
+        margin: 0;
+    }
+
+    li a {
+        display: block;
+        /*Se despliegue como bloque*/
+        color: white;
+        /*text-align: center;*/
+        padding: 15px;
+        text-decoration: none;
+    }
+
+    i {
+        font-size: x-large;
+    }
+}
+

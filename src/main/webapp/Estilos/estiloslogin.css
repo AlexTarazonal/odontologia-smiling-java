@@ -1,0 +1,71 @@
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*ADMIN*/
+.logo {
+    height: 125px;
+}
+.inicio{
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+}
+.nombre {
+    width: auto;
+}
+h1{
+    padding: 45px 45px 45px 5px
+}
+.login{
+    justify-content: center;
+    padding: 100px ;
+    background-color: white;
+    margin: 10px 400px 40px;
+    border-radius: 50px;
+}
+body{
+    background-color: #6BB2C6;
+    justify-content: center;
+}
+.boton{
+    background-color: #032A38;
+    margin: 15px;
+}
+.boton1{
+    background-color: white;
+    border-bottom: black;
+    margin: 15px;
+}
+.boton1:hover{
+    background-color: white;
+    border-bottom: black;
+    margin: 15px;
+}
+.boton:hover{
+    background-color: #032A38;
+}
+a{
+    text-decoration: none;
+    text-transform: none;
+    color: white;
+}
+.plop{
+    display: flex;
+    padding: 60px;
+}
+.img{
+    text-align: center;
+}

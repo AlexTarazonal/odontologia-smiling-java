@@ -1,0 +1,109 @@
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.info{
+    display: flex;
+    padding: 5% 10%;
+    align-content: center;
+    justify-content: space-around;
+}
+body{
+    display: flex;
+}
+.dash{
+    margin: 40px;
+}
+.ctn{
+    margin: 20px;
+}
+.but {
+    margin: 50px;
+    padding: 50px;
+    .btn {
+        background-color: #032A38;
+        color: white;
+    }
+}
+.container{
+    padding: 0px 100px;
+}
+.cita{
+    padding: 20px 80px;
+}
+
+body {
+    background-color: #a7d8f0; /* Fondo celeste más vivo */
+  }
+  
+  .logo {
+    position:absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  
+  .service-title:hover {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .badge {
+    cursor: pointer;
+  }
+  
+  .badge-success:hover {
+    background-color: #28a745;
+  }
+  
+  .badge-danger:hover {
+    background-color: #dc3545;
+  }
+
+  .estado {
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 12px;
+    text-align: center;
+    width: auto;
+}
+
+.estado-pendiente {
+    background-color: #fff3cd; /* Amarillo claro */
+    color: #856404; /* Texto marrón oscuro */
+}
+
+.estado-aprobada {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Texto verde oscuro */
+}
+
+.estado-rechazada {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+}
+
+

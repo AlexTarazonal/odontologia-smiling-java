@@ -1,0 +1,204 @@
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+@media only screen and (max-width: 600px) {
+    .collapse-horizontal {
+        display: block;
+    }
+    .enlaces {
+        width: 100%;
+    }
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+}
+
+nav {
+    height: 100vh;
+    background: #032A38;
+    /*border: 1px solid #dedede;*/
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+}
+nav button{
+    margin: 20px;
+}
+nav i{
+    transform: scale(1.5);
+}
+.but {
+    margin: 50px;
+    padding: 50px;
+    .btn {
+        background-color: #032A38;
+        color: white;
+
+    }
+}
+
+nav img {
+    width: 40%;
+    margin: 25% auto;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+nav img:hover {
+    transform: scale(1.3);
+    /*efecto*/
+}
+
+nav .enlaces {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 250px;
+    padding: 40px 15px;
+}
+
+nav .enlaces a {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+    transition: all 0.5s;
+}
+nav .enlaces a:hover{
+    background: white;
+    border-radius: 25px;
+    width: 100%;
+    color: black;
+
+}
+.container{
+    justify-content: center;
+    align-items: center;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+header .logo {
+    height: 50px;
+}
+
+header a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #007bff;
+}
+
+.lista ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lista ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.lista ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.lista ul li a:hover {
+    color: #007bff;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.custom-font {
+    font-family: 'Courier New', Courier, monospace; /* Cambia esta línea para cambiar la fuente */
+    font-weight: bold; /* Esta línea hará que la letra sea más gruesa */
+}
+
+.container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.pie {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+.pie ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pie ul li {
+    margin-bottom: 10px;
+}
+
+.pie ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.pie ul li a:hover {
+    color: #007bff;
+}
+
+.pie .link1 ul {
+    display: flex;
+    justify-content: center;
+}
+
+.pie .link1 ul li {
+    margin: 0 10px;
+}
