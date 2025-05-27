@@ -15,9 +15,9 @@ public class Conexion {
     public Connection conecta() throws ClassNotFoundException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String usr = "root";
-            String psw = "xander";
-            String url = "jdbc:mysql://localhost:3306/acceso";
+            String usr = "suusuario";
+            String psw = "sucontraseña";
+            String url = "url";
             cnx = DriverManager.getConnection(url, usr, psw);
             return cnx;
         } catch (SQLException e) {
