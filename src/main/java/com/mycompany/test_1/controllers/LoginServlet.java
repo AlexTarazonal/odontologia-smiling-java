@@ -1,13 +1,12 @@
 package com.mycompany.test_1.controllers;
 
-import pe.edu.seg.Usuario;
+import com.mycompany.test_1.dao.UsuarioDAO;
+import com.mycompany.test_1.dao.impl.UsuarioDAOImpl;
+import com.mycompany.test_1.models.Usuario;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
@@ -25,29 +24,26 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // 1) Leer los parámetros del formulario
-        String email    = request.getParameter("email");
-        String password = request.getParameter("password");
+        String id   = request.getParameter("email");
+        String pwd  = request.getParameter("password");
 
-        // 2) Validar contra la base de datos usando tu bean Usuario
-        Usuario usuario = new Usuario();
-        usuario.setId(email);
-        usuario.setPassword(password);
-
-        int log = 0;
+        // 2) Validar usando la capa DAO
+        UsuarioDAO dao = new UsuarioDAOImpl();
+        Usuario user;
         try {
-            log = usuario.getLogueado();  // ejecuta el SELECT y rellena tipo
-        } catch (ClassNotFoundException e) {
-            throw new ServletException("Error al cargar el driver de BD", e);
+            user = dao.authenticate(id, pwd);
+        } catch (Exception e) {
+            throw new ServletException("Error al autenticar usuario", e);
         }
 
-        if (log != 0) {
-            // 3) Guardar el usuario autenticado en la sesión
+        // 3) Si la autenticación fue exitosa...
+        if (user != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", usuario);
+            session.setAttribute("user", user);
 
-            // 4) Redirigir según el rol
-            String tipo = usuario.getTipo().toLowerCase();
-            switch (tipo) {
+            // 4) Redirigir según rol
+            String role = user.getTipo().toLowerCase();
+            switch (role) {
                 case "administrador":
                     response.sendRedirect(request.getContextPath() + "/Admin/ad_index.jsp");
                     break;
@@ -61,11 +57,10 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/Recepcionista/rece_index.jsp");
                     break;
                 default:
-                    // Rol desconocido: volver al login
-                    response.sendRedirect(request.getContextPath() + "/login");
+                    response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
         } else {
-            // Login fallido: volver al login con mensaje de error
+            // 5) Falló autenticar: volver al login con mensaje
             request.setAttribute("error", "Credenciales inválidas");
             request.getRequestDispatcher("/login.jsp")
                    .forward(request, response);

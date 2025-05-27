@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="pe.edu.seg.Doctor" %>
+<%@ page import="com.mycompany.test_1.models.Doctor" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +36,7 @@
         }
     </style>
     <body>  
-        <jsp:useBean id="doctor" class="pe.edu.seg.Doctor" scope="session"></jsp:useBean>
+        <jsp:useBean id="doctor" class="com.mycompany.test_1.models.Doctor" scope="session"></jsp:useBean>
         <jsp:setProperty name="doctor" property="id" param="id"></jsp:setProperty>
         <jsp:scriptlet>
             doctor.verDoctor();

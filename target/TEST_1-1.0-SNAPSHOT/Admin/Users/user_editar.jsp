@@ -34,7 +34,7 @@
         }
     </style>
     <body>  
-        <jsp:useBean id="usuario" class="pe.edu.seg.Usuario" scope="session"></jsp:useBean>
+        <jsp:useBean id="usuario" class="com.mycompany.test_1.models.Usuario" scope="session"></jsp:useBean>
         <jsp:setProperty name="usuario" property="id" param="usr"></jsp:setProperty>
         <jsp:scriptlet>
             usuario.ver();

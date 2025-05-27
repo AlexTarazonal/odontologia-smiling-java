@@ -35,7 +35,7 @@
         }
     </style>
     <body>  
-        <jsp:useBean id="paciente" class="pe.edu.seg.Paciente" scope="session"></jsp:useBean>
+        <jsp:useBean id="paciente" class="com.mycompany.test_1.models.Paciente" scope="session"></jsp:useBean>
         <jsp:setProperty name="paciente" property="id" param="id"></jsp:setProperty>
         <jsp:scriptlet>
             paciente.verPaciente();

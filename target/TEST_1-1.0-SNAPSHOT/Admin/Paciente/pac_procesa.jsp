@@ -12,7 +12,7 @@
         <title>Paciente</title>
     </head>
     <body>
-        <jsp:useBean id="paciente" class="pe.edu.seg.Paciente" scope="session"></jsp:useBean>
+        <jsp:useBean id="paciente" class="com.mycompany.test_1.models.Paciente" scope="session"></jsp:useBean>
         <jsp:scriptlet>
             String accion = request.getParameter("accion");
             String id = request.getParameter("id");

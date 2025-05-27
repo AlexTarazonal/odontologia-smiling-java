@@ -1,6 +1,6 @@
 package com.mycompany.test_1.controllers;
 
-import pe.edu.seg.Usuario;
+import com.mycompany.test_1.models.Usuario;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -37,6 +37,7 @@ public class AuthFilter implements Filter {
                uri.equals("/login")
             || uri.equals("/login.jsp")
             || uri.equals("/logout")
+            || uri.equals("/forbidden.jsp")
             || uri.startsWith("/css/")
             || uri.startsWith("/js/")
             || uri.startsWith("/images/")
@@ -60,19 +61,19 @@ public class AuthFilter implements Filter {
             String role = user.getTipo().toLowerCase();
 
             if (uri.startsWith("/Admin") && !"administrador".equals(role)) {
-                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                response.sendRedirect(request.getContextPath() + "/forbidden.jsp");
                 return;
             }
             if (uri.startsWith("/Doctor") && !"doctor".equals(role)) {
-                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                 response.sendRedirect(request.getContextPath() + "/forbidden.jsp");
                 return;
             }
             if (uri.startsWith("/Usuario") && !"paciente".equals(role)) {
-                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+               response.sendRedirect(request.getContextPath() + "/forbidden.jsp");
                 return;
             }
             if (uri.startsWith("/Recepcionista") && !"recepcionista".equals(role)) {
-                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                response.sendRedirect(request.getContextPath() + "/forbidden.jsp");
                 return;
             }
         }

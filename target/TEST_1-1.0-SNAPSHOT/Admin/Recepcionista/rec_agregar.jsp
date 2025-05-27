@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="pe.edu.seg.Recepcionista" %>
+<%@ page import="com.mycompany.test_1.models.Recepcionista" %>
 <!DOCTYPE html>
 <html>
     <head>
