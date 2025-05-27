@@ -350,14 +350,21 @@
             <!-- Login Card -->
             <div class="login-card">
                 <h2 class="login-title">Iniciar Sesión</h2>
-                
-                <form action="valida.jsp" id="loginForm">
+               <% 
+   String err = (String) request.getAttribute("error");
+   if (err != null) { 
+%>
+  <div class="alert alert-danger"><%= err %></div>
+<% 
+   } 
+%>
+                <form action="${pageContext.request.contextPath}/login" method="post" id="loginForm">
                     <div class="form-group">
                         <label class="form-label" for="username">Usuario</label>
                         <div style="position: relative;">
                             <input 
                                 type="text" 
-                                name="usr" 
+                                name="email" 
                                 id="username"
                                 class="form-control-modern" 
                                 required="true"
@@ -372,7 +379,7 @@
                         <div style="position: relative;">
                             <input 
                                 type="password" 
-                                name="psw" 
+                                name="password" 
                                 id="password"
                                 class="form-control-modern" 
                                 required="true"

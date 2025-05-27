@@ -1,7 +1,9 @@
-com\mycompany\test_1\resources\JakartaEE10Resource.class
 pe\edu\util\Conexion.class
+com\mycompany\test_1\controllers\LogoutServlet.class
+com\mycompany\test_1\controllers\AuthFilter.class
 pe\edu\seg\Paciente.class
 pe\edu\seg\Doctor.class
-com\mycompany\test_1\JakartaRestConfiguration.class
 pe\edu\seg\Recepcionista.class
 pe\edu\seg\Usuario.class
+com\mycompany\test_1\controllers\LoginServlet.class
+pe\edu\util\Main.class
