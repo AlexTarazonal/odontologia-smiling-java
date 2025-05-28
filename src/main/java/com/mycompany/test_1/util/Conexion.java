@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class Conexion {
     private static final String URL = "jdbc:mysql://localhost:3306/acceso"; 
-    private static final String USR = "root";
-    private static final String PSW = "xander";
+    private static final String USR = "suusuario";
+    private static final String PSW = "sucontraseña";
 
     public static Connection getConnection()
             throws ClassNotFoundException, SQLException {
