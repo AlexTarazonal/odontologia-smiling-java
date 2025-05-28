@@ -9,18 +9,21 @@
     <script src="https://kit.fontawesome.com/7c1fcee376.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+   
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <link rel="shortcut icon" href="../Imagenes/icon.jpg">
-    <link rel="stylesheet" href="../Doctor/doc_css/doc_index.css">
-    <link rel="stylesheet" href="rece_css/recepcionista.css">
+    
+    
     <title>Bienvenida - Smiling</title>
 
     <!--FUENTES-->
+    <link rel="shortcut icon" href="../Imagenes/icon.jpg">
+    <link rel="stylesheet" href="../Doctor/doc_css/doc_index.css">
+    <link rel="stylesheet" href="rece_css/recepcionista.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -28,34 +31,9 @@
 
 </head>
 
-<style>
-    body {
-        margin: 0;
-        background: linear-gradient(to bottom, #ffffff, #B9D4DD, #87AAB5);
-    }
-</style>
 <body>
-   <!--NAVEGACION-->
-   <nav style="background-color: #87AAB5;">
-    <div class="sidebar">
-        <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#navegacion"
-            aria-expanded="false" aria-controls="navegacion">
-            <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
-        </button>
-        <div class="collapse collapse-horizontal" id="navegacion">
-            <div class="enlaces">
-                <a href="rece_index.jsp">Inicio</a>
-                <a href="rec_solicitudcitas.html">Solicitudes de Citas</a>
-                <a href="rec_horarios.html">Horario</a>
-                <a href="rec_pacientes.html">Pacientes</a>
-
-            </div>
-            <div class="enlaces">
-                <a href="../login.jsp">Salir</a>
-            </div>
-        </div>
-    </div>
-</nav>
+   <%@ include file="/Recepcionista/include/sidebar_recepcionista.jsp" %>
+  
 <!--FIN DE NAVEGACION-->
 
   <div class="logo">

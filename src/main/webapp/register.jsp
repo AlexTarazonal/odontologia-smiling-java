@@ -1,32 +1,28 @@
-<%-- 
-    Document   : index
-    Created on : 26 abr. 2025, 4:51:16 p. m.
-    Author     : Estudiante
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Login - Smiling</title>
+
+        <title>Registro - Smiling</title>
         <script src="https://kit.fontawesome.com/7c1fcee376.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    
+
         <link rel="stylesheet" href="Estilos/estiloslogin.css">
         <link rel="shortcut icon" href="Imagenes/icon.jpg">
-        
-        <!--FUENTES-->
+
+        <!-- FUENTES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Inter:wght@300;400;500;600;700&display=swap"
+              rel="stylesheet">
     </head>
-    
+
     <style>
         :root {
             --primary-blue: #327ED4;
@@ -77,7 +73,7 @@
 
         .login-container {
             width: 100%;
-            max-width: 450px;
+            max-width: 480px; /* Slightly wider for register form */
             position: relative;
             z-index: 1;
         }
@@ -266,6 +262,52 @@
             text-decoration: underline;
         }
 
+        /* Password strength indicator */
+        .password-strength {
+            margin-top: 0.5rem;
+            height: 4px;
+            background: #e9ecef;
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-strength.active {
+            opacity: 1;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .strength-weak { background: #dc3545; width: 25%; }
+        .strength-fair { background: #fd7e14; width: 50%; }
+        .strength-good { background: #ffc107; width: 75%; }
+        .strength-strong { background: #28a745; width: 100%; }
+
+        .password-match {
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-match.show {
+            opacity: 1;
+        }
+
+        .password-match.match {
+            color: #28a745;
+        }
+
+        .password-match.no-match {
+            color: #dc3545;
+        }
+
         /* Animations */
         @keyframes slideDown {
             from {
@@ -335,6 +377,23 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Form validation styles */
+        .form-control-modern.is-valid {
+            border-color: #28a745;
+        }
+
+        .form-control-modern.is-invalid {
+            border-color: #dc3545;
+        }
+
+        .form-control-modern.is-valid + .input-icon {
+            color: #28a745;
+        }
+
+        .form-control-modern.is-invalid + .input-icon {
+            color: #dc3545;
+        }
     </style>
 
     <body>
@@ -347,77 +406,193 @@
                 </a>
             </div>
 
-            <!-- Login Card -->
+            <!-- Register Card -->
             <div class="login-card">
-                <h2 class="login-title">Iniciar Sesión</h2>
-               <% 
-   String err = (String) request.getAttribute("error");
-   if (err != null) { 
-%>
-  <div class="alert alert-danger"><%= err %></div>
-<% 
-   } 
-%>
-                <form action="${pageContext.request.contextPath}/login" method="post" id="loginForm">
+                <h2 class="login-title">Crear Cuenta</h2>
+
+                <% String err = (String) request.getAttribute("error");
+            if (err != null) {%>
+                <div class="alert alert-danger"><%= err%></div>
+                <% }%>
+
+                <form action="${pageContext.request.contextPath}/register" method="post" id="registerForm">
                     <div class="form-group">
-                        <label class="form-label" for="username">Usuario</label>
+                        <label class="form-label" for="fullName">Nombre Completo</label>
                         <div style="position: relative;">
-                            <input 
-                                type="text" 
-                                name="email" 
-                                id="username"
-                                class="form-control-modern" 
-                                required="true"
-                                placeholder="Ingresa tu usuario"
-                            >
+                            <input type="text"
+                                   name="fullName"
+                                   id="fullName"
+                                   class="form-control-modern"
+                                   required
+                                   placeholder="Ingresa tu nombre completo">
                             <i class="fas fa-user input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Correo Electrónico</label>
+                        <div style="position: relative;">
+                            <input type="email"
+                                   name="email"
+                                   id="email"
+                                   class="form-control-modern"
+                                   required
+                                   placeholder="tucorreo@dominio.com">
+                            <i class="fas fa-envelope input-icon"></i>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="password">Contraseña</label>
                         <div style="position: relative;">
-                            <input 
-                                type="password" 
-                                name="password" 
-                                id="password"
-                                class="form-control-modern" 
-                                required="true"
-                                placeholder="Ingresa tu contraseña"
-                            >
+                            <input type="password"
+                                   name="password"
+                                   id="password"
+                                   class="form-control-modern"
+                                   required
+                                   placeholder="Crea una contraseña">
                             <i class="fas fa-lock input-icon"></i>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="password-strength-bar" id="passwordStrengthBar"></div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-login" id="loginBtn">
-                        <i class="fas fa-sign-in-alt me-2"></i>
-                        Iniciar Sesión
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Confirmar Contraseña</label>
+                        <div style="position: relative;">
+                            <input type="password"
+                                   name="confirmPassword"
+                                   id="confirmPassword"
+                                   class="form-control-modern"
+                                   required
+                                   placeholder="Repite tu contraseña">
+                            <i class="fas fa-lock input-icon"></i>
+                        </div>
+                        <div class="password-match" id="passwordMatch"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-login" id="registerBtn">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Registrarse
                     </button>
                 </form>
 
-                <div class="forgot-password mt-3">
-                ¿No tienes cuenta? <a href="register.jsp">Regístrate aquí</a>
-            </div>
+                <div class="forgot-password" style="margin-top:1.5rem;">
+                    ¿Ya tienes cuenta? <a href="login.jsp">Inicia Sesión</a>
+                </div>
             </div>
         </div>
 
         <script>
-            // Add loading animation on form submit
-            document.getElementById('loginForm').addEventListener('submit', function() {
-                const btn = document.getElementById('loginBtn');
-                btn.classList.add('loading');
-                btn.innerHTML = 'Iniciando...';
+            // Password strength checker
+            function checkPasswordStrength(password) {
+                const strengthBar = document.getElementById('passwordStrengthBar');
+                const strengthContainer = document.getElementById('passwordStrength');
                 
-                // Remove loading state after 3 seconds (in case of slow response)
+                if (password.length === 0) {
+                    strengthContainer.classList.remove('active');
+                    return;
+                }
+                
+                strengthContainer.classList.add('active');
+                
+                let strength = 0;
+                if (password.length >= 8) strength++;
+                if (/[a-z]/.test(password)) strength++;
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                strengthBar.className = 'password-strength-bar';
+                
+                if (strength <= 2) {
+                    strengthBar.classList.add('strength-weak');
+                } else if (strength === 3) {
+                    strengthBar.classList.add('strength-fair');
+                } else if (strength === 4) {
+                    strengthBar.classList.add('strength-good');
+                } else {
+                    strengthBar.classList.add('strength-strong');
+                }
+            }
+
+            // Password match checker
+            function checkPasswordMatch() {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const matchIndicator = document.getElementById('passwordMatch');
+                
+                if (confirmPassword.length === 0) {
+                    matchIndicator.classList.remove('show');
+                    return;
+                }
+                
+                matchIndicator.classList.add('show');
+                
+                if (password === confirmPassword) {
+                    matchIndicator.textContent = '✓ Las contraseñas coinciden';
+                    matchIndicator.className = 'password-match show match';
+                    document.getElementById('confirmPassword').classList.add('is-valid');
+                    document.getElementById('confirmPassword').classList.remove('is-invalid');
+                } else {
+                    matchIndicator.textContent = '✗ Las contraseñas no coinciden';
+                    matchIndicator.className = 'password-match show no-match';
+                    document.getElementById('confirmPassword').classList.add('is-invalid');
+                    document.getElementById('confirmPassword').classList.remove('is-valid');
+                }
+            }
+
+            // Email validation
+            function validateEmail() {
+                const email = document.getElementById('email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email.value.length > 0) {
+                    if (emailPattern.test(email.value)) {
+                        email.classList.add('is-valid');
+                        email.classList.remove('is-invalid');
+                    } else {
+                        email.classList.add('is-invalid');
+                        email.classList.remove('is-valid');
+                    }
+                } else {
+                    email.classList.remove('is-valid', 'is-invalid');
+                }
+            }
+
+            // Event listeners
+            document.getElementById('password').addEventListener('input', function() {
+                checkPasswordStrength(this.value);
+                checkPasswordMatch();
+            });
+
+            document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+            document.getElementById('email').addEventListener('input', validateEmail);
+
+            // Form submission with validation
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                
+                const btn = document.getElementById('registerBtn');
+                btn.classList.add('loading');
+                btn.innerHTML = 'Registrando...';
+
                 setTimeout(() => {
                     btn.classList.remove('loading');
-                    btn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión';
+                    btn.innerHTML = '<i class="fas fa-user-plus me-2"></i>Registrarse';
                 }, 3000);
             });
 
-            // Add focus animations
-            const inputs = document.querySelectorAll('.form-control-modern');
-            inputs.forEach(input => {
+            // Focus animations for inputs
+            document.querySelectorAll('.form-control-modern').forEach(input => {
                 input.addEventListener('focus', function() {
                     this.parentElement.style.transform = 'scale(1.02)';
                 });
