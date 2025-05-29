@@ -9,4 +9,5 @@ public interface DoctorDAO {
     void crear(Doctor d) throws Exception;
     void actualizar(Doctor d) throws Exception;
     void eliminar(String id) throws Exception;
+    int cuentaTotalDoc() throws Exception;
 }

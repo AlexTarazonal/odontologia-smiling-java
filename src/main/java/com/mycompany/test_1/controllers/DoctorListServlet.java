@@ -19,7 +19,7 @@ public class DoctorListServlet extends HttpServlet {
             DoctorDAO dao = new DoctorDAOImpl();
             List<Doctor> lista = dao.listar();
             req.setAttribute("doctores", lista);
-            req.getRequestDispatcher("/doc_listado.jsp")
+            req.getRequestDispatcher("/Admin/doc_listado.jsp")
                .forward(req, resp);
         } catch (Exception e) {
             throw new ServletException("Error al listar doctores", e);

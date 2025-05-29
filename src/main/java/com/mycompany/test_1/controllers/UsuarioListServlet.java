@@ -21,7 +21,7 @@ public class UsuarioListServlet extends HttpServlet {
             UsuarioDAO dao = new UsuarioDAOImpl();
             List<Usuario> lista = dao.listar();
             req.setAttribute("usuarios", lista);
-            req.getRequestDispatcher("/listado.jsp")
+            req.getRequestDispatcher("/Admin/listado.jsp")
                     .forward(req, resp);
         } catch (ClassNotFoundException | SQLException | IOException ex) {
             throw new ServletException("Error de acceso a datos", ex);

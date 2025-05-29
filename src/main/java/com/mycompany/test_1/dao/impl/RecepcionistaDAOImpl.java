@@ -19,7 +19,22 @@ public class RecepcionistaDAOImpl implements RecepcionistaDAO {
         "UPDATE recepcionista SET nombre=?, sexo=?, telefono=?, correo=? WHERE id=?";
     private static final String SQL_DELETE =
         "DELETE FROM recepcionista WHERE id=?";
-
+    private static final String SQL_COUNT =
+        "SELECT COUNT(*) Recepcionista FROM recepcionista";
+    @Override
+    public int cuentaTotalRec() throws Exception , SQLException{
+        int total=0;
+        try (Connection cnx = Conexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement(SQL_COUNT);
+            ResultSet rs=ps.executeQuery()) {
+            
+            if(rs.next()){
+                total=rs.getInt("Recepcionista");
+            }
+        }
+        return total;
+    }
+    
     @Override
     public List<Recepcionista> listar() throws Exception {
         List<Recepcionista> lista = new ArrayList<>();

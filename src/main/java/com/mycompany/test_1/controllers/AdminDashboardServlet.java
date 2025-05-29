@@ -1,9 +1,12 @@
 package com.mycompany.test_1.controllers;
 
-import com.mycompany.test_1.dao.UsuarioDAO;
-import com.mycompany.test_1.dao.impl.UsuarioDAOImpl;
+
 import com.mycompany.test_1.dao.PacienteDAO;
 import com.mycompany.test_1.dao.impl.PacienteDAOImpl;
+import com.mycompany.test_1.dao.RecepcionistaDAO;
+import com.mycompany.test_1.dao.impl.RecepcionistaDAOImpl;
+import com.mycompany.test_1.dao.DoctorDAO;
+import com.mycompany.test_1.dao.impl.DoctorDAOImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,22 +19,24 @@ public class AdminDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            UsuarioDAO udao = new UsuarioDAOImpl();
-            // Cuenta doctores, recepcionistas, pacientes, admins
-            int totalDoctores     = udao.countByRole("Doctor");
-            int totalPacientes    = udao.countByRole("Paciente");
-            int totalRecepcionistas = udao.countByRole("Recepcionista");
-            int totalAdmins       = udao.countByRole("Administrador");
-
+            RecepcionistaDAO pdae = new RecepcionistaDAOImpl();
+            //cuenta total
+            int totalCountRec=pdae.cuentaTotalRec();
+            
+            DoctorDAO pdai = new DoctorDAOImpl();
+            //cuenta total
+            int totalCountDoc=pdai.cuentaTotalDoc();
+            
             PacienteDAO pdao = new PacienteDAOImpl();
+            //cuenta total
+            int totalCountPac=pdao.cuentaTotal();
             // Cuenta por sexo
             int maleCount   = pdao.countByGender("Masculino");
             int femaleCount = pdao.countByGender("Femenino");
 
-            req.setAttribute("totalDoctores", totalDoctores);
-            req.setAttribute("totalPacientes", totalPacientes);
-            req.setAttribute("totalRecepcionistas", totalRecepcionistas);
-            req.setAttribute("totalAdmins", totalAdmins);
+            req.setAttribute("totalCountRec",totalCountRec);
+            req.setAttribute("totalCountDoc",totalCountDoc);
+            req.setAttribute("totalCountPac",totalCountPac);
             req.setAttribute("maleCount", maleCount);
             req.setAttribute("femaleCount", femaleCount);
 

@@ -4,7 +4,7 @@
     Author     : blant
 --%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="com.mycompany.test_1.models.Recepcionista" %>
@@ -20,8 +20,8 @@
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="../Imagenes/icon.jpg">
-        <link rel="stylesheet" href="ad_css/ad_index.css">
-        <link rel="stylesheet" href="ad_css/ad_empleados.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Admin/ad_css/ad_index.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Admin/ad_css/ad_empleados.css">
 
 
         <!--FUENTES-->
@@ -57,12 +57,12 @@
                     </button>
                     <div class="collapse collapse-horizontal" id="navegacion">
                         <div class="enlaces">
-                            <a href="ad_index.jsp">Inicio</a>
-                            <a href="doc_listado.jsp">Doctor</a>
-                            <a href="rec_listado.jsp">Recepcionista</a>
-                            <a href="ad_paciente.jsp">Paciente</a>
-                            <a href="listado.jsp">Usuario</a>
-                            <a href="../login.jsp">Salir</a>
+                            <a href="${pageContext.request.contextPath}/admin/dashboard">Inicio</a>
+                            <a href="${pageContext.request.contextPath}/doctor/list">Doctor</a>
+                            <a href="${pageContext.request.contextPath}/recepcionista/list">Recepcionista</a>
+                            <a href="${pageContext.request.contextPath}/paciente/list">Paciente</a>
+                            <a href="${pageContext.request.contextPath}/usuario/list">Usuario</a>
+                            <a href="${pageContext.request.contextPath}/logout">Salir</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                             <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                         </form>
                     </div>
-                    <a href="Recepcionista/rec_agregar.jsp" class="btn btn-primary px-5 rounded-5">Registrar recepcionista</a>
+                    <a href="${pageContext.request.contextPath}/recepcionista/agregar" class="btn btn-primary px-5 rounded-5">Registrar recepcionista</a>
                     <br>
                     <table class="table table-light table-striped table-hover">
                         <thead>
@@ -93,7 +93,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="r" items="${recepcionistas}">
+                        <c:forEach var="r" items="${recepcionista}">
                         <tr>
                             <td>${r.id}</td>
                             <td>${r.nombre}</td>
@@ -101,10 +101,10 @@
                             <td>${r.telefono}</td>
                             <td>${r.correo}</td>
                             <td>
-                                <a href="Recepcionista/rec_editar.jsp?id=${r.id}" class="btn btn-warning me-1">
+                                <a href="${pageContext.request.contextPath}/recepcionista/editar?id=${r.id}" class="btn btn-warning me-1">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="Recepcionista/rec_eliminar.jsp?id=${r.id}" class="btn btn-danger">
+                                <a href="${pageContext.request.contextPath}/recepcionista/eliminar?id=${r.id}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar?')">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>

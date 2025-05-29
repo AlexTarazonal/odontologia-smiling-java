@@ -54,9 +54,9 @@
             <div class="collapse collapse-horizontal" id="navegacion">
                 <div class="enlaces" style="width: 250px;">
                     <a href="us_index.jsp">Inicio</a>
-                    <a href="us_perfil1.jsp">Mi Perfil</a>
-                    <a href="us_citas.jsp">Citas</a>
-                    <a href="us_recetas.jsp">Recetas</a>
+                    <a href="${pageContext.request.contextPath}/user/profile">Mi Perfil</a>
+                   <a href="${pageContext.request.contextPath}/user/citas">Citas</a>
+                   <a href="${pageContext.request.contextPath}/user/recetas">Recetas</a>
                     <!--<a href="usu_reservarCita.html">Reservar Cita</a>-->
                 </div>
                 <div class="enlaces">

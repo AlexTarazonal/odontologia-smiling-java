@@ -9,4 +9,5 @@ public interface RecepcionistaDAO {
     void crear(Recepcionista r) throws Exception;
     void actualizar(Recepcionista r) throws Exception;
     void eliminar(String id) throws Exception;
+    int cuentaTotalRec() throws Exception;
 }

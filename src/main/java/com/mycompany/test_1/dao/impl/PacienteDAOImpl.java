@@ -21,6 +21,8 @@ public class PacienteDAOImpl implements PacienteDAO {
         "DELETE FROM paciente WHERE id=?";
     private static final String SQL_COUNT_GENDER =
         "SELECT COUNT(*) FROM paciente WHERE sexo=?";
+    private static final String SQL_COUNT =
+        "SELECT COUNT(*) Pacientes FROM paciente";
     
     
     @Override
@@ -101,6 +103,20 @@ public class PacienteDAOImpl implements PacienteDAO {
                 return rs.next() ? rs.getInt(1) : 0;
             }
         }
+    }
+    
+    @Override
+    public int cuentaTotal() throws Exception , SQLException{
+        int total=0;
+        try (Connection cnx = Conexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement(SQL_COUNT);
+            ResultSet rs=ps.executeQuery()) {
+            
+            if(rs.next()){
+                total=rs.getInt("Pacientes");
+            }
+        }
+        return total;
     }
     
     @Override

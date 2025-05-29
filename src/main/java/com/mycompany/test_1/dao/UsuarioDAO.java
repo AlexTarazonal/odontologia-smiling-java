@@ -13,4 +13,13 @@ public interface UsuarioDAO {
 
     List<Usuario> listar()
         throws ClassNotFoundException, SQLException;
+    
+    void crearUser(Usuario u)
+        throws ClassNotFoundException, SQLException;
+    void actualizarUser(Usuario u)
+        throws ClassNotFoundException, SQLException;
+    void eliminarUser(String id)
+        throws ClassNotFoundException, SQLException;
+     Usuario porId(String id)
+        throws ClassNotFoundException, SQLException;    
 }

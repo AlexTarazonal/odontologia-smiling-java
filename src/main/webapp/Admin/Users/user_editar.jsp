@@ -16,8 +16,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     
-        <link rel="stylesheet" href="../../Estilos/estiloslogin.css">
-        <link rel="shortcut icon" href="../../Imagenes/icon.jpg">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Estilos/estiloslogin.css">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/Imagenes/icon.jpg">
         
 
         <!--FUENTES-->
@@ -36,31 +36,22 @@
     <body>  
         <jsp:useBean id="usuario" class="com.mycompany.test_1.models.Usuario" scope="session"></jsp:useBean>
         <jsp:setProperty name="usuario" property="id" param="usr"></jsp:setProperty>
-        <jsp:scriptlet>
-            usuario.ver();
-        </jsp:scriptlet>
+        
     <center>
         <div class=" container col-md-4 justify-content-center my-5">
             <div class="d-flex align-items-center mb-4 justify-content-center gap-3">
-                <form action="user_procesa.jsp" method="post">
+                <form action="${pageContext.request.contextPath}/usuario/editar" method="post">
                     <h3>EDITAR</h3>
-                    <input type="hidden" name="accion" value="editar">
-                    Usuario <br>
-                    <input type="text" name="usr" class="form-control" readonly="true"
-                           value="<jsp:getProperty name="usuario" property="id"></jsp:getProperty>">
-                    Password <br>
-                    <input type="text" name="psw"  class="form-control" 
-                           value="<jsp:getProperty name="usuario" property="password"></jsp:getProperty>">
-                    Nombre <br>
-                    <input type="text" name="nom"  class="form-control" 
-                           value="<jsp:getProperty name="usuario" property="nombre"></jsp:getProperty>">
-                    Tipo <br>
-                    <input type="text" name="tpo"  class="form-control" 
-                           value="<jsp:getProperty name="usuario" property="tipo"></jsp:getProperty>">
-                     <br>
+                    <input type="hidden" name="id" value="${usuario.id}">
+                    Usuario: <b>${usuario.id}</b> 
+                    <br>------
+                    <br>
+                    Password: <input type="text" class="form-control" name="password" value="${usuario.password}" required /><br>
+                    Nombre: <input type="text" class="form-control" name="nombre" value="${usuario.nombre}" required /><br>
+                    Tipo: <input type="text" class="form-control" name="tipo" value="${usuario.tipo}" required /><br>
                      
                    
-                    <a href="../listado.jsp" class="btn btn-danger">Cancelar</a>
+                    <a href="${pageContext.request.contextPath}/usuario/list" class="btn btn-danger">Cancelar</a>
                     <input type="submit"  class="btn btn-success" value="Aceptar">
                 </form>
             </div>

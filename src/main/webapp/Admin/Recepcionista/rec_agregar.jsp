@@ -38,22 +38,40 @@
 <body>
     <div class=" container col-md-4 justify-content-center my-5">
             <div class="d-flex align-items-center mb-4 justify-content-center gap-3">
-                <form action="rec_procesa.jsp">
-                    <h3>Agregar recepcionista</h3>
-                    <input type="hidden" name="accion" value="nuevo">
-                    ID <br>
-                    <input type="text" name="id" class="form-control" required="true">
-                    Nombre <br><!-- comment -->
-                    <input type="nombre" name="nombre"  class="form-control" required="true">
-                    Sexo <br>
-                    <input type="sexo" name="sexo"  class="form-control" required="true"> 
-                    Telefono <br>
-                    <input type="telefono" name="telefono"  class="form-control" required="true"> 
-                    Correo <br>
-                    <input type="correo" name="correo"  class="form-control" required="true">
-                    <br>
-                    <a href="../rec_listado.jsp" class="btn btn-danger">Cancelar</a>
-                    <input type="submit"  class="btn btn-success" value="Aceptar">
+               <form method="post" action="${pageContext.request.contextPath}/recepcionista/agregar">
+                    <h3>Agregar Recepcionista</h3>
+                    <div class="mb-3">
+                        <label for="id" class="form-label">ID</label>
+                        <input type="text" name="id" id="id" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select name="sexo" id="sexo" class="form-control" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" name="correo" id="correo" class="form-control" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <a href="${pageContext.request.contextPath}/recepcionista/list" class="btn btn-secondary">Cancelar</a>
+
                 </form>
             </div>
         </div>

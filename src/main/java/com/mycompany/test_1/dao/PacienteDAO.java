@@ -9,5 +9,7 @@ public interface PacienteDAO {
     void crear(Paciente p) throws Exception;
     void actualizar(Paciente p) throws Exception;
     void eliminar(String id) throws Exception;
-       int countByGender(String sexo) throws Exception;
+    int countByGender(String sexo) throws Exception;
+    int cuentaTotal() throws Exception;
+
 }

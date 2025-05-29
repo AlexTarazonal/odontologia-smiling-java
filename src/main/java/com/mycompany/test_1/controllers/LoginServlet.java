@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
             String role = user.getTipo().toLowerCase();
             switch (role) {
                 case "administrador":
-                    response.sendRedirect(request.getContextPath() + "/Admin/ad_index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/admin/dashboard");
                     break;
                 case "doctor":
                     response.sendRedirect(request.getContextPath() + "/Doctor/doc_index.jsp");
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/Recepcionista/rece_index.jsp");
                     break;
                 default:
-                    response.sendRedirect(request.getContextPath() + "/login.jsp");
+                    response.sendRedirect(request.getContextPath() + "/login");
             }
         } else {
             // 5) Falló autenticar: volver al login con mensaje
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
                    .forward(request, response);
         }
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Servlet encargado de la autenticación y redireccionamiento según rol";

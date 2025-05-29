@@ -38,36 +38,45 @@
     <body>  
         <jsp:useBean id="doctor" class="com.mycompany.test_1.models.Doctor" scope="session"></jsp:useBean>
         <jsp:setProperty name="doctor" property="id" param="id"></jsp:setProperty>
-        <jsp:scriptlet>
-            doctor.verDoctor();
-        </jsp:scriptlet>
+        
+        
     <center>
         <div class=" container col-md-4 justify-content-center my-5">
             <div class="d-flex align-items-center mb-4 justify-content-center gap-3">
-                <form action="doc_procesa.jsp" method="post">
-                    <h3 class="mb-4">Editar Doctor</h3>
+                <form method="post" action="${pageContext.request.contextPath}/doctor/editar">
+                    <input type="hidden" name="id" value="${doctor.id}" />
 
-                    <input type="hidden" name="accion" value="editar">
-                    <input type="hidden" name="id" value="<jsp:getProperty name="doctor" property="id"></jsp:getProperty>">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control" value="${doctor.nombre}" required />
+                    </div>
 
-                    Nombre<br>
-                    <input type="text" name="nombre" class="form-control"
-                           value="<jsp:getProperty name="doctor" property="nombre"></jsp:getProperty>">
-                    Sexo<br>
-                    <input type="text" name="sexo" class="form-control"
-                           value="<jsp:getProperty name="doctor" property="sexo"></jsp:getProperty>">
-                    Teléfono<br>
-                    <input type="text" name="telefono" class="form-control"
-                           value="<jsp:getProperty name="doctor" property="telefono"></jsp:getProperty>">
-                    Correo<br>
-                    <input type="email" name="correo" class="form-control"
-                           value="<jsp:getProperty name="doctor" property="correo"></jsp:getProperty>">
-                    Especialidad<br>
-                    <input type="text" name="especialidad" class="form-control"
-                           value="<jsp:getProperty name="doctor" property="especialidad"></jsp:getProperty>">
+                    <div class="mb-3">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select name="sexo" id="sexo" class="form-control" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Masculino" ${doctor.sexo == 'M' ? "selected" : ""}>Masculino</option>
+                            <option value="Femenino" ${doctor.sexo == 'F' ? "selected" : ""}>Femenino</option>
+                        </select>
+                    </div>
 
-                    <a href="../doc_listado.jsp" class="btn btn-danger">Cancelar</a>
-                    <input type="submit" value="Guardar" class="btn btn-success">
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control" value="${doctor.telefono}" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" name="correo" id="correo" class="form-control" value="${doctor.correo}" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="especialidad" class="form-label">Especialidad</label>
+                        <input type="text" name="especialidad" id="especialidad" class="form-control" value="${doctor.especialidad}" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                    <a href="${pageContext.request.contextPath}/doctor/list" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
         </div>

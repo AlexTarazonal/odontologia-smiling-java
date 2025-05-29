@@ -6,6 +6,9 @@
 
 <%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.mycompany.test_1.dao.impl.UsuarioDAOImpl"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.LinkedList, com.mycompany.test_1.models.Usuario" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -21,8 +24,8 @@
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="../Imagenes/icon.jpg">
-        <link rel="stylesheet" href="ad_css/ad_empleados.css">
-        <link rel="stylesheet" href="ad_css/ad_index.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Admin/ad_css/ad_empleados.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Admin/ad_css/ad_index.css">
 
         <!--FUENTES-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +44,6 @@
                 background: linear-gradient(to bottom, #ffffff, #B9D4DD, #87AAB5);
             }
         </style>
-        <jsp:useBean id="users" class="com.mycompany.test_1.models.Usuario" scope="session"></jsp:useBean>
         <body>
             <nav style="background-color: #87AAB5;">
                 <div class="sidebar">
@@ -51,13 +53,12 @@
                     </button>
                     <div class="collapse collapse-horizontal" id="navegacion">
                         <div class="enlaces">
-                            <a href="ad_index.jsp">Inicio</a>
-                            <a href="doc_listado.jsp">Doctor</a>
-                            <a href="rec_listado.jsp">Recepcionista</a>
-                            <a href="ad_paciente.jsp">Paciente</a>
-                            <a href="listado.jsp">Usuario</a>
-                            <a href="../login.jsp">Salir</a>
-                        </div>
+                            <a href="${pageContext.request.contextPath}/admin/dashboard">Inicio</a>
+                            <a href="${pageContext.request.contextPath}/doctor/list">Doctor</a>
+                            <a href="${pageContext.request.contextPath}/recepcionista/list">Recepcionista</a>
+                            <a href="${pageContext.request.contextPath}/paciente/list">Paciente</a>
+                            <a href="${pageContext.request.contextPath}/usuario/list">Usuario</a>
+                            <a href="${pageContext.request.contextPath}/logout">Salir</a>                        </div>
                     </div>
                 </div>
             </nav>
@@ -75,8 +76,10 @@
                             <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                         </form>
                     </div>
-                    <a href="Users/user_agregar.jsp" class="btn btn-primary px-5 rounded-5">Registrar usuario</a>
+                    <a href="${pageContext.request.contextPath}/usuario/agregar" class="btn btn-primary px-5 rounded-5">Registrar usuario</a>
                     <br>
+                    
+
                     <table class="table table-light table-striped table-hover">
                         <thead>
                             <tr>
@@ -91,26 +94,26 @@
                         <tbody>
 
                         <c:forEach var="u" items="${usuarios}">
-                        <tr>
-                            <td>${u.id}</td>
-                            <td>${u.password}</td>
-                            <td>${u.nombre}</td>
-                            <td>${u.tipo}</td>
-                            <td>
-                                <a href="Users/user_editar.jsp?usr=${u.id}" class="btn btn-warning">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="Users/user_eliminar.jsp?usr=${u.id}" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                            <tr>
+                                <td>${u.id}</td>
+                                <td>${u.password}</td>
+                                <td>${u.nombre}</td>
+                                <td>${u.tipo}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/usuario/editar?id=${u.id}" class="btn btn-warning">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/usuario/eliminar?id=${u.id}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>  
-
+                
             </div>
         </div>
 

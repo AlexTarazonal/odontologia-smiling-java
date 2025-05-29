@@ -19,7 +19,22 @@ public class DoctorDAOImpl implements DoctorDAO {
         "UPDATE doctor SET nombre=?, sexo=?, telefono=?, correo=?, especialidad=? WHERE id=?";
     private static final String SQL_DELETE =
         "DELETE FROM doctor WHERE id=?";
-
+    private static final String SQL_COUNT =
+        "SELECT COUNT(*) Doctores FROM doctor";
+    @Override
+    public int cuentaTotalDoc() throws Exception , SQLException{
+        int total=0;
+        try (Connection cnx = Conexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement(SQL_COUNT);
+            ResultSet rs=ps.executeQuery()) {
+            
+            if(rs.next()){
+                total=rs.getInt("Doctores");
+            }
+        }
+        return total;
+    }
+    
     @Override
     public List<Doctor> listar() throws Exception {
         List<Doctor> lista = new ArrayList<>();

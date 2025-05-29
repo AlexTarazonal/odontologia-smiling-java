@@ -19,7 +19,7 @@
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="shortcut icon" href="../Imagenes/icon.jpg">
-        <link rel="stylesheet" href="ad_css/ad_index.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Admin/ad_css/ad_index.css">
 
         <!--FUENTES-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,23 +54,17 @@
                     </button>
                     <div class="collapse collapse-horizontal" id="navegacion">
                         <div class="enlaces">
-                            <a href="ad_index.jsp">Inicio</a>
-                            <a href="doc_listado.jsp">Doctor</a>
-                            <a href="rec_listado.jsp">Recepcionista</a>
-                            <a href="ad_paciente.jsp">Paciente</a>
-                            <a href="listado.jsp">Usuario</a>
-                            <a href="../login.jsp">Salir</a>
+                            <a href="${pageContext.request.contextPath}/admin/dashboard">Inicio</a>
+                            <a href="${pageContext.request.contextPath}/doctor/list">Doctor</a>
+                            <a href="${pageContext.request.contextPath}/recepcionista/list">Recepcionista</a>
+                            <a href="${pageContext.request.contextPath}/paciente/list">Paciente</a>
+                            <a href="${pageContext.request.contextPath}/usuario/list">Usuario</a>
+                            <a href="${pageContext.request.contextPath}/logout">Salir</a>
                         </div>
                     </div>
                 </div>
             </nav>
-            <h3>Total Doctores: ${totalDoctores}</h3>
-        <h3>Total Pacientes: ${totalPacientes}</h3>
-        <h3>Total Recepcionistas: ${totalRecepcionistas}</h3>
-        <h3>Total Administradores: ${totalAdmins}</h3>
-
-        <h3>Pacientes Masculinos: ${maleCount}</h3>
-        <h3>Pacientes Femeninos: ${femaleCount}</h3>
+           
         <div class="container my-5">
             <center>
                 <h1>Bienvenido(a)</h1>
@@ -80,9 +74,9 @@
                 <div class="col-md-4">
                     <div class="toast fade show ctn" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-body">
-                            <h1>121</h1>
+                            <h1>${totalCountRec}</h1>
                             <div class="mt-2 pt-2 border-top">
-                                <h3>Citas Totales</h3>
+                                <h3>Recepcionistas</h3>
                             </div>
                         </div>
                     </div>
@@ -90,7 +84,7 @@
                 <div class="col-md-4">
                     <div class="toast fade show ctn" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-body">
-                            <h1>${totalPacientes}</h1>
+                            <h1>${totalCountPac}</h1>
                             <div class="mt-2 pt-2 border-top">
                                 <h3>Pacientes</h3>
                             </div>
@@ -100,7 +94,7 @@
                 <div class="col-md-4">
                     <div class="toast fade show ctn" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-body">
-                             <h1>${totalDoctores}</h1>
+                             <h1>${totalCountDoc}</h1>
                             <div class="mt-2 pt-2 border-top">
                                 <h3>Doctores</h3>
                             </div>

@@ -18,8 +18,8 @@ public class RecepcionistaListServlet extends HttpServlet {
         try {
             RecepcionistaDAO dao = new RecepcionistaDAOImpl();
             List<Recepcionista> lista = dao.listar();
-            req.setAttribute("recepcionistas", lista);
-            req.getRequestDispatcher("/rec_listado.jsp")
+            req.setAttribute("recepcionista", lista);
+            req.getRequestDispatcher("/Admin/rec_listado.jsp")
                .forward(req, resp);
         } catch (Exception e) {
             throw new ServletException("Error al listar recepcionistas", e);

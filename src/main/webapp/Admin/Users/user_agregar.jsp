@@ -17,8 +17,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     
-        <link rel="stylesheet" href="../../Estilos/estiloslogin.css">
-        <link rel="shortcut icon" href="../../Imagenes/icon.jpg">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Estilos/estiloslogin.css">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/Imagenes/icon.jpg">
         
 
         <!--FUENTES-->
@@ -38,19 +38,19 @@
     <center>
         <div class=" container col-md-4 justify-content-center my-5">
             <div class="d-flex align-items-center mb-4 justify-content-center gap-3">
-                <form action="user_procesa.jsp">
+                <form action="${pageContext.request.contextPath}/usuario/agregar" method="post">
                     <h3>Agregar usuario</h3>
                     <input type="hidden" name="accion" value="nuevo">
                     Usuario <br>
-                    <input type="text" name="usr" class="form-control" required="true">
+                    <input type="text" name="id" class="form-control" required="true">
                     Password <br><!-- comment -->
-                    <input type="password" name="psw"  class="form-control" required="true">
+                    <input type="password" name="password"  class="form-control" required="true">
                     Nombre <br>
-                    <input type="nombre" name="nom"  class="form-control" required="true"> 
+                    <input type="text" name="nombre"  class="form-control" required="true"> 
                     Tipo <br>
-                    <input type="tipo" name="tpo"  class="form-control" required="true"> 
+                    <input type="text" name="tipo"  class="form-control" required="true"> 
                     <br>
-                    <a href="../listado.jsp" class="btn btn-danger">Cancelar</a>
+                    <a href="${pageContext.request.contextPath}/usuario/list" class="btn btn-danger">Cancelar</a>
                     <input type="submit"  class="btn btn-success" value="Aceptar">
                 </form>
             </div>

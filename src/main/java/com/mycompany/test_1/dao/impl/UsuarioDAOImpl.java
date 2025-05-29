@@ -6,6 +6,7 @@ import com.mycompany.test_1.util.Conexion;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
@@ -14,9 +15,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         = "SELECT id, nombre, tipo FROM usuario WHERE id=? AND password=?";
     private static final String SQL_COUNT_ROLE
         = "SELECT COUNT(*) FROM usuario WHERE tipo=?";
+    private static final String SQL_INSERT_USUARIO 
+        = "INSERT INTO usuario (id, password, nombre, tipo) VALUES (?, ?, ?, ?)";
     private static final String SQL_LIST
         = "SELECT id, password, nombre, tipo FROM usuario";
-
+    private static final String SQL_ELIMINAR
+        = "DELETE FROM usuario WHERE id=?";
+    private static final String SQL_ACTUALIZAR
+        = "UPDATE usuario SET password=?, nombre=? ,tipo=? where id=?";
+     private static final String SQL_POR_ID
+        = "SELECT id, password, nombre, tipo FROM usuario WHERE id=?";
     @Override
     public Usuario authenticate(String id, String password)
             throws ClassNotFoundException, SQLException {
@@ -52,7 +60,67 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             }
         }
     }
+    
 
+
+    @Override
+    public void crearUser(Usuario u)throws ClassNotFoundException, SQLException{
+        try (Connection cnx = Conexion.getConnection();
+        PreparedStatement ps = cnx.prepareStatement(SQL_INSERT_USUARIO)) {
+        ps.setString(1, u.getId());
+        ps.setString(2, u.getPassword());
+        ps.setString(3, u.getNombre());
+        ps.setString(4, u.getTipo());
+        ps.executeUpdate();
+        }
+    }
+    @Override
+    public void actualizarUser(Usuario u) throws ClassNotFoundException, SQLException {
+        
+
+        try (Connection cnx = Conexion.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(SQL_ACTUALIZAR)) {
+            ps.setString(1, u.getPassword());
+            ps.setString(2, u.getNombre());
+            ps.setString(3, u.getTipo());
+            ps.setString(4, u.getId());
+            ps.executeUpdate();
+        }
+    }
+    
+        
+    @Override
+    public Usuario porId(String id) throws ClassNotFoundException, SQLException {
+        try (Connection cnx = Conexion.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(SQL_POR_ID)) {
+            ps.setString(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Usuario u = new Usuario();
+                    u.setId(rs.getString("id"));
+                    u.setPassword(rs.getString("password"));
+                    u.setNombre(rs.getString("nombre"));
+                    u.setTipo(rs.getString("tipo"));
+                    return u;
+                }
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public void eliminarUser(String id) throws ClassNotFoundException, SQLException {
+        
+
+        try (Connection cnx = Conexion.getConnection();
+             PreparedStatement ps = cnx.prepareStatement(SQL_ELIMINAR)) {
+            ps.setString(1, id);
+            ps.executeUpdate();
+        }
+    }
+    
+    
+     
     @Override
     public List<Usuario> listar()
             throws ClassNotFoundException, SQLException {
@@ -72,4 +140,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return usuarios;
     }
+    
+   
+
+
+    
+
+
 }
